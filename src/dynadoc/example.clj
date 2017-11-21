@@ -13,8 +13,7 @@
     :else v))
 
 (defn parse-examples [args]
-  (mapv #(select-keys % [:doc :def :ret :pre :dom])
-    (if (map? (first args)) args (list (apply hash-map args)))))
+  (if (map? (first args)) args (list (apply hash-map args))))
 
 (defmacro defexample
   "Defines one or more example code blocks for a symbol or an arbitrary
