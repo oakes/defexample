@@ -16,7 +16,7 @@ keyword, it will be associated with the current namespace."
             :else k)
         args (if (map? (first args)) args (list (apply hash-map args)))]
     (swap! examples assoc-in [ns-sym k]
-      (mapv #(select-keys % [:doc :def :ret])
+      (mapv #(select-keys % [:doc :def :ret :dom])
         args))
     nil))
 
