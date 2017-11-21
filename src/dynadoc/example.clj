@@ -2,22 +2,29 @@
 
 (defonce examples (atom {}))
 
+(defn parse-ns [k]
+  (try (symbol (namespace k))
+    (catch Exception _)))
+
+(defn parse-val [v]
+  (cond
+    (symbol? v) (symbol (name v))
+    (keyword? v) (keyword (name v))
+    :else v))
+
+(defn parse-examples [args]
+  (mapv #(select-keys % [:doc :def :ret :pre :dom])
+    (if (map? (first args)) args (list (apply hash-map args)))))
+
 (defmacro defexample
   "Defines one or more example code blocks for a symbol or an arbitrary
 piece of Clojure data. If `k` is not a namespace-qualified symbol or
 keyword, it will be associated with the current namespace."
   [k & args]
-  (let [ns-sym (symbol (or (try (symbol (namespace k))
-                             (catch Exception _))
-                           (symbol (str *ns*))))
-        k (cond
-            (symbol? k) (symbol (name k))
-            (keyword? k) (keyword (name k))
-            :else k)
-        args (if (map? (first args)) args (list (apply hash-map args)))]
+  (let [ns-sym (or (parse-ns k) (symbol (str *ns*)))
+        k (parse-val k)]
     (swap! examples assoc-in [ns-sym k]
-      (mapv #(select-keys % [:doc :def :ret :pre :dom])
-        args))
+      (parse-examples args))
     nil))
 
 (defexample defexample
