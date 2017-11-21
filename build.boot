@@ -1,9 +1,7 @@
 (set-env!
   :source-paths #{"src"}
   :resource-paths #{"src"}
-  :dependencies '[[org.clojure/clojure "1.8.0" :scope "provided"]
-                  [org.clojure/clojurescript "1.9.946" :scope "provided"]
-                  [org.clojure/core.async "0.3.443"]]
+  :dependencies '[[org.clojure/clojure "1.8.0" :scope "provided"]]
   :repositories (conj (get-env :repositories)
                   ["clojars" {:url "https://clojars.org/repo/"
                               :username (System/getenv "CLOJARS_USER")
