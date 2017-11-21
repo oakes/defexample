@@ -9,7 +9,7 @@
 
 (task-options!
   pom {:project 'defexample
-       :version "1.0.1"
+       :version "1.0.2-SNAPSHOT"
        :description "A macro for defining code examples"
        :url "https://github.com/oakes/defexample"
        :license {"Public Domain" "http://unlicense.org/UNLICENSE"}}
