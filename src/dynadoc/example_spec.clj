@@ -8,16 +8,15 @@
            (contains? #{'fn 'fn*} (first x)))))
 
 (s/def ::doc string?)
-(s/def ::pre coll?)
 (s/def ::def coll?)
 (s/def ::ret function?)
 
 (s/def ::example (s/keys*
                    :req-un [::def]
-                   :opt-un [::doc ::pre ::ret]))
+                   :opt-un [::doc ::ret]))
 (s/def ::examples (s/* (s/keys
                          :req-un [::def]
-                         :opt-un [::doc ::pre ::ret])))
+                         :opt-un [::doc ::ret])))
 
 (fdef ex/defexample
   :args (s/cat
