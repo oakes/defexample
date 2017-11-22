@@ -5,8 +5,7 @@
 (defn function? [x]
   (or (symbol? x)
       (and (coll? x)
-           (contains? #{'fn 'fn*} (first x))
-           (vector? (second x)))))
+           (contains? #{'fn 'fn*} (first x)))))
 
 (s/def ::doc string?)
 (s/def ::pre coll?)
