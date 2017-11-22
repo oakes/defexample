@@ -101,13 +101,11 @@
      "Add two numbers together"
      (+ 1 1))]
   ["Define an example of a function in the current namespace"
-   (defexample clojure.core/+
-     "Add two numbers together"
-     (defn square [n]
-       (* n n))
-     (defexample square
-       "Multiply 2 by itself"
-       (square 2)))]
+   (defn square [n]
+     (* n n))
+   (defexample square
+     "Multiply 2 by itself"
+     (square 2))]
   ["Define an example of a function with an assertion for testing"
    (defn square [n]
      (* n n))
