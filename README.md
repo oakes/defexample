@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A library that provides a single macro, `defexample`, for annotating functions with code examples, similar to the way clojure.spec annotates functions with specs using `fdef`. To see examples of its use, see the use of `defexample` right after the macro itself is defined :)
+A library that provides two macros, `defexample` and `defexamples`, for annotating functions with code examples, similar to the way clojure.spec annotates functions with specs using `fdef`. To see examples of their use, see the source code, which uses them to define examples of themselves :)
 
 ## Licensing
 
