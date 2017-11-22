@@ -12,14 +12,13 @@
 (s/def ::pre coll?)
 (s/def ::def coll?)
 (s/def ::ret function?)
-(s/def ::dom boolean?)
 
 (s/def ::example (s/keys*
                    :req-un [::def]
-                   :opt-un [::doc ::pre ::ret ::dom]))
+                   :opt-un [::doc ::pre ::ret]))
 (s/def ::examples (s/* (s/keys
                          :req-un [::def]
-                         :opt-un [::doc ::pre ::ret ::dom])))
+                         :opt-un [::doc ::pre ::ret])))
 
 (fdef ex/defexample
   :args (s/cat
