@@ -1,7 +1,8 @@
 (set-env!
   :source-paths #{"src"}
   :resource-paths #{"src"}
-  :dependencies '[[org.clojure/clojure "1.9.0-RC1" :scope "provided"]
+  :dependencies '[[org.clojure/clojure "1.8.0" :scope "provided"]
+                  [clojure-future-spec "1.9.0-beta4"]
                   [nightlight "1.9.3" :scope "test"]]
   :repositories (conj (get-env :repositories)
                   ["clojars" {:url "https://clojars.org/repo/"

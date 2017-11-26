@@ -19,8 +19,10 @@
                              :opts ::opts))
                 :body (s/+ ::body)))
 
-(s/def ::example (s/cat :key any? :args ::args))
-(s/def ::examples (s/cat :key any? :args (s/+ ::args)))
+(defn ^:private any?* [_] true)
+
+(s/def ::example (s/cat :key any?* :args ::args))
+(s/def ::examples (s/cat :key any?* :args (s/+ ::args)))
 
 (fdef defexample*
   :args ::example)
