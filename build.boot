@@ -1,14 +1,18 @@
 (set-env!
   :source-paths #{"src"}
   :resource-paths #{"src"}
-  :dependencies '[[org.clojure/clojure "1.8.0" :scope "provided"]
+  :dependencies '[[org.clojure/clojurescript "1.9.946" :scope "test"]
+                  [org.clojure/clojure "1.8.0" :scope "provided"]
                   [clojure-future-spec "1.9.0-beta4"]
-                  [nightlight "1.9.3" :scope "test"]]
+                  [nightlight "1.9.3" :scope "test"]
+		  [dynadoc "1.0.0" :scope "test"]]
   :repositories (conj (get-env :repositories)
                   ["clojars" {:url "https://clojars.org/repo/"
                               :username (System/getenv "CLOJARS_USER")
                               :password (System/getenv "CLOJARS_PASS")}]))
 (require
+  '[dynadoc.example]
+  '[dynadoc.boot :refer [dynadoc]]
   '[nightlight.boot :refer [nightlight]])
 
 (task-options!
@@ -23,6 +27,11 @@
   (comp
     (wait)
     (nightlight :port 4000)))
+
+(deftask run-docs []
+  (comp
+    (wait)
+    (dynadoc :port 5000)))
 
 (deftask local []
   (comp (pom) (jar) (install)))

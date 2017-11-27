@@ -113,14 +113,7 @@
    (defexample square
      {:doc "Multiply 2 by itself"
       :ret (fn [n] (= n 4))}
-     (square 2))]
-  ["Define an example of a piece of arbitrary data"
-   (defexample :table
-     "Creates a <table> tag"
-     [:table
-      [:tr
-       [:td "Column 1"]
-       [:td "Column 2"]]])])
+     (square 2))])
 
 (defexample defexamples
   "Define multiple examples of the `conj` function"
