@@ -1,28 +1,27 @@
 (ns dynadoc.example
   (:require [clojure.spec.alpha :as s :refer [fdef]]
-            [clojure.core.specs.alpha]))
+            [clojure.core.specs.alpha]
+            [clojure.future :as f]))
 
 (defn non-evaled-fn? [x]
   (or (symbol? x)
       (and (coll? x)
            (contains? #{'fn 'fn*} (first x)))))
 
-(defn ^:private any?* [_] true)
-
 (s/def ::doc string?)
 (s/def ::ret non-evaled-fn?)
 (s/def ::with-card :clojure.core.specs.alpha/local-name)
 (s/def ::with-focus :clojure.core.specs.alpha/binding)
 (s/def ::opts (s/keys :opt-un [::doc ::ret ::with-card ::with-focus]))
-(s/def ::body any?*)
+(s/def ::body f/any?)
 (s/def ::args (s/cat
                 :meta (s/? (s/alt
                              :doc ::doc
                              :opts ::opts))
                 :body (s/+ ::body)))
 
-(s/def ::example (s/cat :key any?* :args ::args))
-(s/def ::examples (s/cat :key any?* :args (s/+ ::args)))
+(s/def ::example (s/cat :key f/any? :args ::args))
+(s/def ::examples (s/cat :key f/any? :args (s/+ ::args)))
 
 (fdef defexample*
   :args ::example)
