@@ -102,18 +102,14 @@
      "Add two numbers together"
      (+ 1 1))]
   ["Define an example of a function in the current namespace"
-   (defn square [n]
-     (* n n))
-   (defexample square
-     "Multiply 2 by itself"
-     (square 2))]
+   (defexample parse-ns
+     "Get the namespace from a symbol"
+     (parse-ns 'my.namespace/asdf))]
   ["Define an example of a function with an assertion for testing"
-   (defn square [n]
-     (* n n))
-   (defexample square
-     {:doc "Multiply 2 by itself"
-      :ret (fn [n] (= n 4))}
-     (square 2))])
+   (defexample parse-ns
+     {:doc "Get the namespace from a symbol"
+      :ret (fn [n] (= n 'my.namespace))}
+     (parse-ns 'my.namespace/asdf))])
 
 (defexample defexamples
   "Define multiple examples of the `conj` function"
