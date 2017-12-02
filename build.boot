@@ -1,11 +1,10 @@
 (set-env!
   :source-paths #{"src"}
   :resource-paths #{"src"}
-  :dependencies '[[org.clojure/clojurescript "1.9.946" :scope "test"]
-                  [org.clojure/clojure "1.8.0" :scope "provided"]
+  :dependencies '[[org.clojure/clojure "1.8.0" :scope "provided"]
                   [clojure-future-spec "1.9.0-beta4"]
-                  [nightlight "1.9.3" :scope "test"]
-		  [dynadoc "1.0.0" :scope "test"]]
+                  [nightlight "2.0.3" :scope "test"]
+                  [dynadoc "1.1.1" :scope "test"]]
   :repositories (conj (get-env :repositories)
                   ["clojars" {:url "https://clojars.org/repo/"
                               :username (System/getenv "CLOJARS_USER")
