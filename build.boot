@@ -4,7 +4,7 @@
   :dependencies '[[org.clojure/clojure "1.8.0" :scope "provided"]
                   [clojure-future-spec "1.9.0-beta4"]
                   [nightlight "2.0.4" :scope "test"]
-                  [dynadoc "1.1.3" :scope "test"]]
+                  [dynadoc "1.1.4" :scope "test"]]
   :repositories (conj (get-env :repositories)
                   ["clojars" {:url "https://clojars.org/repo/"
                               :username (System/getenv "CLOJARS_USER")
