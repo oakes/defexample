@@ -1,13 +1,14 @@
 (set-env!
-  :source-paths #{"src"}
-  :resource-paths #{"src"}
-  :dependencies '[[org.clojure/clojure "1.9.0" :scope "provided"]
-                  [nightlight "2.0.4" :scope "test"]
-                  [dynadoc "1.1.6" :scope "test"]]
+  :dependencies '[[nightlight "2.0.4" :scope "test"]
+                  [dynadoc "1.1.6" :scope "test"]
+                  [org.clojars.oakes/boot-tools-deps "0.1.4" :scope "test"]]
   :repositories (conj (get-env :repositories)
                   ["clojars" {:url "https://clojars.org/repo/"
                               :username (System/getenv "CLOJARS_USER")
                               :password (System/getenv "CLOJARS_PASS")}]))
+
+(require '[boot-tools-deps.core :refer [deps]])
+
 (require
   '[dynadoc.example]
   '[dynadoc.boot :refer [dynadoc]]
@@ -23,17 +24,19 @@
 
 (deftask run []
   (comp
+    (deps)
     (wait)
     (nightlight :port 4000)))
 
 (deftask run-docs []
   (comp
+    (deps)
     (wait)
     (dynadoc :port 5000)))
 
 (deftask local []
-  (comp (pom) (jar) (install)))
+  (comp (deps) (pom) (jar) (install)))
 
 (deftask deploy []
-  (comp (pom) (jar) (push)))
+  (comp (deps) (pom) (jar) (push)))
 
