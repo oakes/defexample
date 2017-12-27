@@ -1,5 +1,6 @@
 (set-env!
-  :dependencies '[[nightlight "2.0.4" :scope "test"]
+  :dependencies '[[org.clojure/clojure "1.9.0" :scope "provided"]
+                  [nightlight "2.0.4" :scope "test"]
                   [dynadoc "1.1.6" :scope "test"]
                   [org.clojars.oakes/boot-tools-deps "0.1.4.1" :scope "test"]]
   :repositories (conj (get-env :repositories)
