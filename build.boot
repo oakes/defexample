@@ -1,5 +1,5 @@
 (set-env!
-  :dependencies '[[nightlight "2.0.6" :scope "test"]
+  :dependencies '[[nightlight "2.1.0" :scope "test"]
                   [dynadoc "1.2.0" :scope "test"]
                   [org.clojars.oakes/boot-tools-deps "0.1.4.1" :scope "test"]]
   :repositories (conj (get-env :repositories)
