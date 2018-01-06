@@ -38,12 +38,7 @@
   (comp
     (deps)
     (wait)
-    (nightlight :port 4000)))
-
-(deftask run-docs []
-  (comp
-    (deps)
-    (wait)
+    (nightlight :port 4000)
     (dynadoc :port 5000)))
 
 (deftask local []
