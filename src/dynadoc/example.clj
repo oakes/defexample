@@ -2,16 +2,12 @@
   (:require [clojure.spec.alpha :as s :refer [fdef]]
             [clojure.core.specs.alpha]))
 
-(defn non-evaled-fn? [x]
-  (or (symbol? x)
-      (and (coll? x)
-           (contains? #{'fn 'fn*} (first x)))))
-
 (s/def ::doc string?)
-(s/def ::ret non-evaled-fn?)
+(s/def ::ret any?)
 (s/def ::with-card :clojure.core.specs.alpha/local-name)
+(s/def ::with-callback :clojure.core.specs.alpha/local-name)
 (s/def ::with-focus :clojure.core.specs.alpha/binding)
-(s/def ::opts (s/keys :opt-un [::doc ::ret ::with-card ::with-focus]))
+(s/def ::opts (s/keys :opt-un [::doc ::ret ::with-card ::with-focus ::with-callback]))
 (s/def ::body any?)
 (s/def ::args (s/cat
                 :meta (s/? (s/alt
