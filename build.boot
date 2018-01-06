@@ -1,4 +1,5 @@
 (set-env!
+  :resource-paths #{"src"}
   :dependencies '[[nightlight "2.1.0" :scope "test"]
                   [dynadoc "1.3.0" :scope "test"]
                   [seancorfield/boot-tools-deps "0.1.4" :scope "test"]]
