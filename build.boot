@@ -1,6 +1,7 @@
 (set-env!
   :resource-paths #{"src"}
-  :dependencies '[[nightlight "2.1.0" :scope "test"]
+  :dependencies '[[eval-soup "1.4.0" :scope "test"]
+                  [nightlight "2.1.0" :scope "test" :exclusions [eval-soup]]
                   [dynadoc "1.4.0" :scope "test"]
                   [seancorfield/boot-tools-deps "0.1.4" :scope "test"]]
   :repositories (conj (get-env :repositories)
