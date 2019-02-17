@@ -1,3 +1,4 @@
 {:paths ["src"]
- :deps {org.clojure/clojure {:mvn/version "1.9.0" :scope "provided"}}
- :aliases {:cljs {:extra-deps {org.clojure/clojurescript {:mvn/version "1.9.946"}}}}}
+ :deps {}
+ :aliases {:dev {:extra-deps {dynadoc {:mvn/version "RELEASE"}}}
+           :prod {:extra-deps {leiningen {:mvn/version "2.9.0"}}}}}
